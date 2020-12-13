@@ -1,14 +1,19 @@
-let screenWidth = 800;
-let screenHeight = 800;
-let tilePerRow = 8;
-let tilePerColumn = 8;
-let tileWidth = screenWidth / tilePerRow;
-let tileHeight = screenHeight / tilePerColumn;
-let tileInnerTileWidth = 5;
-let tileInnerTileHeight = 5;
+import Character from "/src/character.js";
+
+const screenWidth = 800;
+const screenHeight = 800;
+const tilePerRow = 8;
+const tilePerColumn = 8;
+const tileWidth = screenWidth / tilePerRow;
+const tileHeight = screenHeight / tilePerColumn;
+const tileInnerTileWidth = 5;
+const tileInnerTileHeight = 5;
 
 let canvas = document.getElementById("gameScreen");
 let context = canvas.getContext("2d");
+
+// Clear the screen
+context.clearRect(0, 0, screenWidth, screenHeight);
 
 // Color the background in goldßß
 context.fillStyle = "#e4d00a";
@@ -18,7 +23,7 @@ context.fillRect(0, 0, screenWidth, screenHeight);
 for (var i = 0; i < tilePerRow / 2; i++) {
   for (var j = 0; j < tilePerColumn / 2; j++) {
     // black tiles
-    context.fillStyle = "#000";
+    context.fillStyle = "#737373";
     context.fillRect(
       i * tileWidth * 2 + tileInnerTileWidth,
       j * tileHeight * 2 + tileInnerTileHeight,
@@ -48,3 +53,6 @@ for (var i = 0; i < tilePerRow / 2; i++) {
     );
   }
 }
+
+let char1 = new Character("Phantom");
+char1.draw(context, tileWidth, tileHeight);
